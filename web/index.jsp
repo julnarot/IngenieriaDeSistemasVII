@@ -4,6 +4,7 @@
     Author     : MAGWI
 --%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@include file="conexion.jsp" %>
 <!DOCTYPE html>
 <%
     //consulta = "select name, dni from persona ;";
@@ -12,7 +13,7 @@
 
         String usuario=request.getParameter("usuario")==null ? "": request.getParameter("usuario");
         String password=request.getParameter("clave")==null ? "": request.getParameter("clave");               
-        consulta ="SELECT * FROM encargado WHERE UPPER(usuario)=UPPER('"+usuario+"') and clave='"+password+"'";        
+        consulta ="SELECT * FROM encargado WHERE UPPER(usuario)=UPPER('"+usuario+"') AND clave='"+password+"' AND estado='1'";        
         try{
     
     ps = conex.prepareStatement(consulta);
