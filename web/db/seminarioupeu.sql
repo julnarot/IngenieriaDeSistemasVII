@@ -1,6 +1,6 @@
 /*
 SQLyog Community v8.81 
-MySQL - 5.5.8 : Database - seminarioupeu
+MySQL - 5.5.17-log : Database - seminarioupeu
 *********************************************************************
 */
 
@@ -12,7 +12,7 @@ MySQL - 5.5.8 : Database - seminarioupeu
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
-CREATE DATABASE /*!32312 IF NOT EXISTS*/`seminarioupeu` /*!40100 DEFAULT CHARACTER SET latin1 */;
+CREATE DATABASE /*!32312 IF NOT EXISTS*/`seminarioupeu` /*!40100 DEFAULT CHARACTER SET utf8 */;
 
 USE `seminarioupeu`;
 
@@ -30,11 +30,11 @@ CREATE TABLE `encargado` (
   `clave` varchar(10) NOT NULL,
   `numtelefono` varchar(20) NOT NULL,
   PRIMARY KEY (`idenc`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
 
 /*Data for the table `encargado` */
 
-insert  into `encargado`(`idenc`,`direccion`,`estado`,`name`,`rol`,`usuario`,`clave`,`numtelefono`) values (1,'dir1','1','guillermo','cobrador','user1','123','123456789');
+insert  into `encargado`(`idenc`,`direccion`,`estado`,`name`,`rol`,`usuario`,`clave`,`numtelefono`) values (1,'dir1','1','web','web','web','123456','0000000'),(2,'xyz','1','juan','responsable 1,2,3','juan','123456','00000'),(3,'nnn','1','gerson','esternos','gerson','123456','00000'),(4,'magwi','1','william','admin','magwi','123456','00000'),(5,'antartida','1','raul','admin','riko','123456','00000');
 
 /*Table structure for table `persona` */
 
@@ -43,24 +43,24 @@ DROP TABLE IF EXISTS `persona`;
 CREATE TABLE `persona` (
   `idper` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(60) NOT NULL,
-  `codigo` varchar(20) DEFAULT NULL,
+  `codigo` int(20) DEFAULT NULL,
   `email` varchar(60) DEFAULT NULL,
   `estado` varchar(10) DEFAULT NULL,
-  `asistencia` varchar(10) DEFAULT NULL,
+  `asistencia` varchar(10) NOT NULL,
   `comentario` varchar(200) DEFAULT NULL,
-  `dni` varchar(10) DEFAULT NULL,
+  `dni` varchar(10) NOT NULL,
   `idenc` int(11) NOT NULL,
-  `monto` int(10) DEFAULT NULL,
-  `entregado` varchar(10) DEFAULT NULL,
-  `nroticket` decimal(10,0) DEFAULT NULL,
+  `monto` decimal(10,0) NOT NULL,
+  `entregado` decimal(10,0) NOT NULL,
+  `nroticket` int(10) NOT NULL,
   PRIMARY KEY (`idper`),
   KEY `encargado_persona_fk` (`idenc`),
   CONSTRAINT `encargado_persona_fk` FOREIGN KEY (`idenc`) REFERENCES `encargado` (`idenc`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=latin1;
 
 /*Data for the table `persona` */
 
-insert  into `persona`(`idper`,`name`,`codigo`,`email`,`estado`,`asistencia`,`comentario`,`dni`,`idenc`,`monto`,`entregado`,`nroticket`) values (2,'WILLIAM CALISAYA PARI','200810381','elmagwi@gmail.com','1','0','cool','44444444',1,15,'0','101'),(6,'JOSE CARLOS MARIATEGUI','2342','wfwerwe','1','0','asd','3245354',1,0,'0','102'),(7,'GISELA MORENO VALA','234234','WEWER','1','0','asdas','23423',1,15,'0','103');
+insert  into `persona`(`idper`,`name`,`codigo`,`email`,`estado`,`asistencia`,`comentario`,`dni`,`idenc`,`monto`,`entregado`,`nroticket`) values (2,'WILLIAM CALISAYA PARI',200810381,'elmagwi@gmail.com','1','0','cool','44444444',1,'15','0',101),(13,'DELGADO COASACA LUCERO SANCAYO',0,'lucerosancayo@gmail.com','1','0','\'\'','47649677',1,'0','0',0),(14,'XXXX',0,'kjhlkh','1','0','kjhkh','87687',1,'0','0',0);
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
