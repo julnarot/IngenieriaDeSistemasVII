@@ -28,7 +28,7 @@ if(accion.equals("guardar"))
     ps.setString(3, comentario);
     ps.setString(4, dni);
 
-    if(ps.executeUpdate()==1){response.sendRedirect("index.jsp");}
+    if(ps.executeUpdate()==1){response.sendRedirect("reporte.jsp");}
     else{out.print("No es posible registrar");
     }
 }
