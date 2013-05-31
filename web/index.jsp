@@ -3,14 +3,8 @@
     Created on : 28-mar-2013, 22:44:27
     Author     : MAGWI
 --%>
-<%@include file="conexion.jsp" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<%
-    consulta = "select name, dni from persona ;";
-    ps = conex.prepareStatement(consulta);
-    rs = ps.executeQuery();
-%>
 <html>
     <head>
         <title>IVseminarioSystem</title>
@@ -29,9 +23,6 @@
         <link rel="stylesheet" href="miniport/css/style.css" />
         <link rel="stylesheet" href="miniport/css/style-desktop.css" />
         </noscript>
-        <!--[if lte IE 9]><link rel="stylesheet" href="css/ie9.css" /><![endif]-->
-        <!--[if lte IE 8]><link rel="stylesheet" href="css/ie8.css" /><![endif]-->
-        <!--[if lte IE 7]><link rel="stylesheet" href="css/ie7.css" /><![endif]-->
     </head>
     <body>
 
@@ -79,38 +70,30 @@
         <!-- Work -->
 
         <!-- Contact -->
+        
+        
         <div class="wrapper wrapper-style4">
             <article id="contact">
                 <header>
                     <h2>Registrate</h2>
                     <%-- <span>...</span> --%>
                 </header>
-                <form action="FormSave.jsp" method="post">
+                <form action="saveHome.jsp" method="post">
                     <div class="5grid">
                         <div class="row">
                             <div class="12u">
                                 <form method="post" action="#">
                                     <div class="5grid">
                                         <div class="row">
-                                            <div class="6u">
-                                                <input type="text" name="name" id="name" placeholder="Apellidos y Nombres" onChange="javascript:this.value=this.value.toUpperCase();"/>
-                                            </div>
-                                        </div>
-                                            <div class="row">
-                                            <div class="6u">
-                                                <input type="text" name="dni" id="dni" placeholder="Dni" maxlength="8"/>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="6u">
-                                                <input type="text" name="email" id="email" placeholder="Email" />
-                                            </div>
-                                        </div>
-                                            
-                                            <div class="row">
-                                            <div class="6u">
-                                                <textarea type="text" name="comentario" id="comentario" rows="2" cols="5" maxlength="190" placeholder="Comentario"></textarea>
-                                            </div>    
+       
+                                                NOMBRES Y APELLIDOS
+                                                <input type="text" name="name" id="name" placeholder="Apellidos y Nombres" onChange="javascript:this.value=this.value.toUpperCase();" required autocomplete="off"/>
+                                                <label>DNI</label>
+                                                <input type="text" name="dni" id="dni" placeholder="Dni" maxlength="8" autocomplete="off"/>
+                                                <label>EMAIL</label>
+                                                <input type="text" name="email"  id="email" placeholder="Email" autocomplete="off"/>
+                                                <label>COMENTARIO</label>
+                                                <textarea type="text" name="comentario" id="comentario" rows="2" cols="5" maxlength="190" placeholder="Comentario" autocomplete="off"></textarea>
                                         </div>
                                         <div class="row">
                                             <div class="12u">
@@ -121,11 +104,6 @@
                                     </div>
                                     <input type="hidden" name="accion" value="guardar">
                                 </form>
-                                <br/>
-                                <br/>
-                                <br/>
-                                <br/>
-                                <br/>
                                 <br/>
                                 <br/>
                             </div>

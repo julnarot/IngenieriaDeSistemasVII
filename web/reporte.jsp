@@ -25,9 +25,9 @@
         <div align="center">
             <h3>IV SEMINARIO DE LA TENDENCIA DE DESARROLLO DE SOFTWARE</h3>
 
-&nbsp;[&nbsp;<a href="#">Reporte Inscritos</a> &nbsp;]&nbsp;
-&nbsp;[&nbsp;<a href="#">Recaudacion En moneda</a> &nbsp;]&nbsp;           
-&nbsp;[&nbsp;<a href="frmNuevo.jsp">Nuevo</a> &nbsp;]&nbsp;           
+            &nbsp;[&nbsp;<a href="#">Reporte Inscritos</a> &nbsp;]&nbsp;
+            &nbsp;[&nbsp;<a href="#">Recaudacion En moneda</a> &nbsp;]&nbsp;           
+            &nbsp;[&nbsp;<a href="frmNuevo.jsp">Nuevo</a> &nbsp;]&nbsp;           
 
             <br>
         </div>
@@ -46,7 +46,7 @@
                     <input type="text" class="textImput" id="nombre" name="nombre" value="" size="30" /> 
                     <input type="submit" value="Buscar" name="buscar" />
                 </div>
-                    
+
             </form>
             <br/>
             <br/>
@@ -73,23 +73,15 @@
                     <td><%=rs.getString("monto")%></td>
                     <td><%=rs.getString("entregado")%></td>
                     <td><%=rs.getString("nroticket")%></td>
-
                     <td>
-                        <%--
-                                          &nbsp;<a href="amigo_save.jsp?accion=eliminar&idamigo=<%=rs.getString("idamigo") %>" onclick="return confirm('¿Estas seguro de ELIMINAR?');" title="Eliminar amigo">
-                                          <img src="../imagenes/icons/trash.png" height="18" width="18"  alt=""/>
-                                          </a>&nbsp;
-                                        
-                                         &nbsp;<a href="amigo_edit_fm.jsp?accion=actualizar&idamigo=<%=rs.getString("idamigo") %>" title="Editar amigo">
-                                         <img src="../imagenes/icons/edit_f2.png" height="16" width="16"alt=""/>
-                                         </a>&nbsp;
-                        --%>
-
+                        &nbsp;<a href="#" onclick="return confirm('¿Estas seguro de ELIMINAR?');">ELIMINAR</a>&nbsp;
+                        &nbsp;<a href="#" title="EDITAR">EDITAR</a>&nbsp;
+                        &nbsp;<a href="#" title="PRINT">PRINT</a>&nbsp;
                     </td>
 
                 </tr>
                 <%}
-                conex.close();%>
+                    conex.close();%>
             </table>
         </div>
     </body>
