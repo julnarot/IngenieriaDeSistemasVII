@@ -55,13 +55,10 @@
         </noscript>
         <!--[if lte IE 9]><link rel="stylesheet" href="css/ie9.css" /><![endif]-->
         <!--[if lte IE 8]><link rel="stylesheet" href="css/ie8.css" /><![endif]-->
-        <!--[if lte IE 7]><link rel="stylesheet" href="css/ie7.css" /><![endif]-->
-        
-        
-  <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
+        <!--[if lte IE 7]><link rel="stylesheet" href="css/ie7.css" /><![endif]-->                
+        <link rel="stylesheet" href="miniport/css/jquery-ui.css" />
+        <script src="miniport/js/jquery-ui.js"></script>
   
-  <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
-  <link rel="stylesheet" href="/resources/demos/style00.css" />
   <script>
   $(function() {
        
