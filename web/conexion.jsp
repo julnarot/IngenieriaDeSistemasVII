@@ -3,7 +3,7 @@
 <%@page import="java.sql.*" %>
 <%
 DriverManager.registerDriver(new com.mysql.jdbc.Driver());
-Connection conex=DriverManager.getConnection("jdbc:mysql://localhost:3306/seminarioupeu?user=root&password=123456");
+Connection conex=DriverManager.getConnection("jdbc:mysql://localhost:3306/seminarioupeu?user=root&password=");
 //variables
 Statement st=null;
 PreparedStatement ps=null,ps2=null,ps3=null;
