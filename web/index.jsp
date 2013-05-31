@@ -20,8 +20,8 @@
     rs = ps.executeQuery();
 
         if(rs.next()){
-            String usu=rs.getString("usuario");
-            String usuid=rs.getString("clave");
+        String usu=rs.getString("usuario");
+        String usuid=rs.getString("idenc");
         request.getSession().setAttribute("userName",usu);
         request.getSession().setAttribute("userId",usuid);
         response.sendRedirect("reporte.jsp");        
