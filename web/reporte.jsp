@@ -24,22 +24,16 @@
         <title>JSP Page</title>
     </head>
     <body>
-
         <div align="center">
             <h2><%=UsuarioNombre%>:<%=UsuarioId%></h2>
             <h3>IV SEMINARIO DE LA TENDENCIA DE DESARROLLO DE SOFTWARE</h3>
-
             &nbsp;[&nbsp;<a href="#">Reporte Inscritos</a> &nbsp;]&nbsp;
             &nbsp;[&nbsp;<a href="#">Recaudacion En moneda</a> &nbsp;]&nbsp;           
             &nbsp;[&nbsp;<a href="frmNuevo.jsp">Nuevo</a> &nbsp;]&nbsp;           
-
             <br>
         </div>
-
         <br>
-
         <div align="center">
-
             <br/>
             <br/>
             <br/>
@@ -50,14 +44,12 @@
                     <input type="text" class="textImput" id="nombre" name="nombre" value="" size="30" /> 
                     <input type="submit" value="Buscar" name="buscar" />
                 </div>
-
             </form>
             <br/>
             <br/>
             <table id="rounded-corner" align="center" border="1">
                 <thead>
                     <tr>
-
                         <th colspan="6">REPORTE SUSCRITOS</th>
                     </tr>
                     <tr>
@@ -71,7 +63,6 @@
                 </thead>
                 <% while (rs.next()) {%>
                 <tr>
-
                     <td><%=rs.getString("idper")%></td>
                     <td><%=rs.getString("name")%></td>
                     <td><%=rs.getString("monto")%></td>
@@ -79,7 +70,7 @@
                     <td><%=rs.getString("nroticket")%></td>
                     <td>
                         &nbsp;<a href="#" onclick="return confirm('¿Estas seguro de ELIMINAR?');">ELIMINAR</a>&nbsp;
-                        &nbsp;<a href="#" title="EDITAR">EDITAR</a>&nbsp;
+                        &nbsp;<a href="frmEdit.jsp?accion=actualizar&idper=<%=rs.getString("idper") %>" title="Editar">EDITAR</a>&nbsp;
                         &nbsp;<a href="#" title="PRINT">PRINT</a>&nbsp;
                     </td>
 
