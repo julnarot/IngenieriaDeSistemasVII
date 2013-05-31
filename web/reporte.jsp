@@ -8,6 +8,9 @@
 <%
     String nombre = request.getParameter("nombre") == null ? "" : request.getParameter("nombre");
     String stylo = "display:normal";
+    String UsuarioNombre=(String) request.getAttribute("userName");
+    String UsuarioId=(String) request.getAttribute("userId");
+    
 %>
 <%
     consulta = "select * from persona  "
@@ -23,6 +26,7 @@
     <body>
 
         <div align="center">
+            <h2><%=UsuarioNombre%></h2>
             <h3>IV SEMINARIO DE LA TENDENCIA DE DESARROLLO DE SOFTWARE</h3>
 
 &nbsp;[&nbsp;<a href="#">Reporte Inscritos</a> &nbsp;]&nbsp;

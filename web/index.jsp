@@ -7,10 +7,34 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <%
-    consulta = "select name, dni from persona ;";
+    //consulta = "select name, dni from persona ;";
+    //ps = conex.prepareStatement(consulta);
+    //rs = ps.executeQuery();
+
+        String usuario=request.getParameter("usuario")==null ? "": request.getParameter("usuario");
+        String password=request.getParameter("clave")==null ? "": request.getParameter("clave");               
+        consulta ="SELECT * FROM encargado WHERE UPPER(usuario)=UPPER('"+usuario+"') and clave='"+password+"'";        
+        try{
+    
     ps = conex.prepareStatement(consulta);
     rs = ps.executeQuery();
-%>
+
+        if(rs.next()){
+            String usu=rs.getString("usuario");
+            String usuid=rs.getString("clave");
+        request.getSession().setAttribute("userName",usu);
+        request.getSession().setAttribute("userId",usuid);
+        response.sendRedirect("reporte.jsp");        
+        }
+        }catch(SQLException e){ System.out.println(e.getMessage());
+        }finally{
+        
+        }
+        %>
+        
+        
+        
+        
 <html>
     <head>
         <title>IVseminarioSystem</title>
@@ -32,15 +56,69 @@
         <!--[if lte IE 9]><link rel="stylesheet" href="css/ie9.css" /><![endif]-->
         <!--[if lte IE 8]><link rel="stylesheet" href="css/ie8.css" /><![endif]-->
         <!--[if lte IE 7]><link rel="stylesheet" href="css/ie7.css" /><![endif]-->
+        
+        
+  <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
+  
+  <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+  <link rel="stylesheet" href="/resources/demos/style00.css" />
+  <script>
+  $(function() {
+       
+    $( "#dialog" ).dialog({
+      autoOpen: false,
+      resizable:false,
+      show: {
+        effect: "blind",
+        duration: 1000
+      },
+      hide: {
+        effect: "explode",
+        duration: 1000
+      }
+    });
+ 
+    $( "#opener" ).click(function() {
+      $( "#dialog" ).dialog( "open" );
+    });
+  });
+  </script>
+        
     </head>
     <body>
 
+        <div id="dialog" title="Ingrese">
+            
+            <form action="index.jsp" method="POST" >
+                <table border="0">                
+                <tbody>
+                    <tr>
+                        <td>Usuario:</td>
+                        <td><input type="text" name="usuario" value="" id="fil" size="10" required=""/></td>
+                
+                    </tr>
+                    <tr>
+                        <td>Password:</td>
+                        <td><input type="password" name="clave" value="" id="fil" size="10" required=""/></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" align="center"><input type="submit" value="Ingresar" /></td>                        
+                    </tr>
+                </tbody>
+            </table>
+            </form>
+            
+
+</div>
+        
+        
         <!-- Nav -->
         <nav id="nav">
             <ul>
                 <li><a href="#top">Home</a></li>
                 <li><a href="#contact">Registrar</a></li>
-                <li><a href="#portfolio">Ubicación</a></li>
+                <li><a href="#portfolio">Ubicación</a></li>               
+                <li><img src="miniport/images/login-icon.png" id="opener" width="35" height="35" alt="login-icon"/></li>
             </ul>
         </nav>
         
