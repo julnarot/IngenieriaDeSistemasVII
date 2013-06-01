@@ -22,6 +22,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
         <title>JSP Page</title>
+        
     </head>
     <body>
         <div align="center">
@@ -29,9 +30,34 @@
             <h3>IV SEMINARIO DE LA TENDENCIA DE DESARROLLO DE SOFTWARE</h3>
             &nbsp;[&nbsp;<a href="#">Reporte Inscritos</a> &nbsp;]&nbsp;
             &nbsp;[&nbsp;<a href="#">Recaudacion En moneda</a> &nbsp;]&nbsp;           
-            &nbsp;[&nbsp;<a href="frmNuevo.jsp">Nuevo</a> &nbsp;]&nbsp;           
+            &nbsp;[&nbsp;<a href="#" id="opener">Nuevo</a> &nbsp;]&nbsp;           
             <br>
         </div>
+            
+            <div id="dialog" title="Registro">
+                <form action="FormSave.jsp" method="post">
+    
+                <h2>REGITRAR USUARIOS</h2>
+    
+                    <div>
+                        <input type="text" name="name" id="name" placeholder="Apellidos y Nombres" onChange="javascript:this.value = this.value.toUpperCase();"/>
+                    </div>
+                    <div>
+                        <input type="text" name="dni" id="dni" placeholder="Dni" maxlength="8"/>
+                    </div>
+                    <div>
+                        <input type="text" name="email" id="email" placeholder="Email" />
+                    </div>
+                    <div>
+                        <textarea type="text" name="comentario" id="comentario" rows="2" cols="5" maxlength="190" placeholder="Comentario"></textarea>
+                    </div>    
+                    <div>
+                        <input type="submit" class="button" value="Registrar" />
+                        <input type="reset" class="button button-alt" value="Cancel" />
+                    </div>
+                <input type="hidden" name="accion" value="guardar">
+        </form>
+            </div>
         <br>
         <div align="center">
             <br/>
