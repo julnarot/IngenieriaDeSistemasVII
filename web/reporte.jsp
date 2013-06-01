@@ -22,62 +22,104 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
         <title>JSP Page</title>
+        <link href="assets/css/bootstrap.css" rel="stylesheet">
+        <style type="text/css">
+            body {
+                padding-top: 60px;
+                padding-bottom: 40px;
+            }
+            .sidebar-nav {
+                padding: 9px 0;
+            }
+
+            @media (max-width: 980px) {
+                /* Enable use of floated navbar text */
+                .navbar-text.pull-right {
+                    float: none;
+                    padding-left: 5px;
+                    padding-right: 5px;
+                }
+            }
+        </style>
+        <link href="assets/css/bootstrap-responsive.css" rel="stylesheet">
     </head>
     <body>
-        <div align="center">
-            <h2><%=UsuarioNombre%>:<%=UsuarioId%></h2>
-            <h3>IV SEMINARIO DE LA TENDENCIA DE DESARROLLO DE SOFTWARE</h3>
-            &nbsp;[&nbsp;<a href="#">Reporte Inscritos</a> &nbsp;]&nbsp;
-            &nbsp;[&nbsp;<a href="#">Recaudacion En moneda</a> &nbsp;]&nbsp;           
-            &nbsp;[&nbsp;<a href="frmNuevo.jsp">Nuevo</a> &nbsp;]&nbsp;           
-            <br>
-        </div>
-        <br>
-        <div align="center">
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <form name="formBuscar" action="reporte.jsp">
-                <div>
-                    BUSCAR :
-                    <input type="text" class="textImput" id="nombre" name="nombre" value="" size="30" /> 
-                    <input type="submit" value="Buscar" name="buscar" />
-                </div>
-            </form>
-            <br/>
-            <br/>
-            <table id="rounded-corner" align="center" border="1">
-                <thead>
-                    <tr>
-                        <th colspan="6">REPORTE SUSCRITOS</th>
-                    </tr>
-                    <tr>
-                        <th>ID</th>
-                        <th>NOMBRE</th>
-                        <th>MONTO</th>
-                        <th>ENTREGADO</th>
-                        <th>NRO TICKET</th>
-                        <th>OPCIONES</th>
-                    </tr>
-                </thead>
-                <% while (rs.next()) {%>
-                <tr>
-                    <td><%=rs.getString("idper")%></td>
-                    <td><%=rs.getString("name")%></td>
-                    <td><%=rs.getString("monto")%></td>
-                    <td><%=rs.getString("entregado")%></td>
-                    <td><%=rs.getString("nroticket")%></td>
-                    <td>
-                        &nbsp;<a href="#" onclick="return confirm('¿Estas seguro de ELIMINAR?');">ELIMINAR</a>&nbsp;
-                        &nbsp;<a href="frmEdit.jsp?accion=actualizar&idper=<%=rs.getString("idper") %>" title="Editar">EDITAR</a>&nbsp;
-                        &nbsp;<a href="#" title="PRINT">PRINT</a>&nbsp;
-                    </td>
 
-                </tr>
-                <%}
-                    conex.close();%>
-            </table>
+        <div class="navbar">
+            <div class="navbar-inner" align="center">
+                <h3>IV SEMINARIO DE LA TENDENCIA DE DESARROLLO DE SOFTWARE</h3>
+                <div align="right">
+                    <h5>USUARIO: <%=UsuarioNombre%>:<%=UsuarioId%></h5>
+                </div>
+            </div>
         </div>
+        
+      
+
+        <div class="container-fluid">
+            <div class="row-fluid">
+                <div class="span2">
+                    <a href="frmNuevo.jsp" class="btn btn-large btn-block btn-primary btn btn-info">Nuevo</a>           
+                    <a href="#" class="btn btn-large btn-block btn-primary btn btn-info">Reporte Inscritos</a>
+                    <a href="#" class="btn btn-large btn-block btn-primary btn btn-info">Recaudacion En moneda</a>                    
+                </div>
+                <div class="span10">
+                    <div align="right">
+                        <form class="bs-docs-example form-search" name="formBuscar" action="reporte.jsp">
+                            <div class="input-append">
+                                BUSCAR :
+                                <input type="text" class="search-query" id="nombre" name="nombre" value="" size="200" /> 
+                                <input type="submit" class="btn" value="Buscar" name="buscar" />
+                            </div>
+                        </form>
+                        <%-- aqui boots  --%>
+                        <center>
+                            <div class="container">
+                                <div class="tab-pane fade active in" id="profile">
+                                    <div class="bs-docs-example">
+                                        <table class="table table-hover">
+                                            <thead>
+                                                <tr>
+                                                    <th>ID</th>
+                                                    <th>NOMBRE</th>
+                                                    <th>MONTO</th>
+                                                    <th>ENTREGADO</th>
+                                                    <th>NRO TICKET</th>
+                                                    <th>OPCIONES</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+
+                                                <% while (rs.next()) {%>
+                                                <tr>
+                                                    <td><%=rs.getString("idper")%></td>
+                                                    <td><%=rs.getString("name")%></td>
+                                                    <td><%=rs.getString("monto")%></td>
+                                                    <td><%=rs.getString("entregado")%></td>
+                                                    <td><%=rs.getString("nroticket")%></td>
+                                                    <td>
+                                                        &nbsp;<a class="icon-trash" href="#" onclick="return confirm('¿Estas seguro de ELIMINAR?');"></a>&nbsp;
+                                                        &nbsp;<a class="icon-edit" href="frmEdit.jsp?accion=actualizar&idper=<%=rs.getString("idper") %>" title="Editar"></a>&nbsp;
+                                                        &nbsp;<a class="icon-print" href="#" title="PRINT"></a>&nbsp;
+                                                    </td>
+                                                </tr>
+                                                <%}
+                    conex.close();%>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </center>
+                        <%-- aqui boots  --%>
+                        <br/>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <br>
+
     </body>
 </html>
