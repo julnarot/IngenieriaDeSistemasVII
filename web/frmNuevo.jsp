@@ -9,12 +9,13 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
+    
     </head>
     <body>
     <center>
-        <form action="FormSave.jsp" method="post">
+        <form action="FormSave.jsp" method="post" style="background-color: #fff;">
     
-                <h2>REGITRAR USUARIOS</h2>
+                <h2>REGITRAR ASISTENTES</h2>
     
                     <div>
                         <input type="text" name="name" id="name" placeholder="Apellidos y Nombres" onChange="javascript:this.value = this.value.toUpperCase();"/>
@@ -23,7 +24,13 @@
                         <input type="text" name="dni" id="dni" placeholder="Dni" maxlength="8"/>
                     </div>
                     <div>
-                        <input type="text" name="email" id="email" placeholder="Email" />
+                        <input type="email" name="email" id="email" placeholder="Email" />
+                    </div>                                                       
+                    <div>
+                        <input type="text" name="monto" id="monto" placeholder="Monto" maxlength="5"/>
+                    </div>
+                    <div>
+                        <input type="text" name="nroticket" id="numtic" placeholder="Numero de Ticket" maxlength="5"/>
                     </div>
                     <div>
                         <textarea type="text" name="comentario" id="comentario" rows="2" cols="5" maxlength="190" placeholder="Comentario"></textarea>

@@ -21,13 +21,14 @@ String nroticket = request.getParameter("nroticket");
 if(accion.equals("guardar"))
     {
     consulta="insert into persona(name, codigo, email, estado, asistencia, comentario, dni, idenc, monto, entregado, nroticket) "
-                         + "values (?,    '0',     ?,     '1',     '0',      ?,          ?,   '1',   '0',     '0',      '0');";
+                         + "values (?,    '0',     ?,     '1',     '0',      ?,          ?,   '1',   ?,     '0',      ?);";
     ps=conex.prepareStatement(consulta);
     ps.setString(1, name);
     ps.setString(2, email);
     ps.setString(3, comentario);
     ps.setString(4, dni);
-
+    ps.setString(5, monto);
+    ps.setString(6, nroticket);
     if(ps.executeUpdate()==1){response.sendRedirect("reporte.jsp");}
     else{out.print("No es posible registrar");
     }
