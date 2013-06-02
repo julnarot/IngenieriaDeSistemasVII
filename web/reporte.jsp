@@ -113,9 +113,9 @@
                                                     <td><%=rs.getString("entregado")%></td>
                                                     <td><%=rs.getString("nroticket")%></td>
                                                     <td>
-                                                        &nbsp;<a class="icon-trash" href="#" onclick="return confirm('¿Estas seguro de ELIMINAR?');"></a>&nbsp;
-                                                        &nbsp;<a class="icon-edit" href="frmEdit.jsp?accion=actualizar&idper=<%=rs.getString("idper") %>" title="Editar"></a>&nbsp;
-                                                        &nbsp;<a class="icon-print" href="jasper/certificado.jsp?idper=<%=rs.getString("idper")%>" title="PRINT"></a>&nbsp;
+                                                        <a class="icon-trash" href="FormSave.jsp?accion=eliminar&idper=<%=rs.getString("idper") %>" onclick="return confirm('¿Estas seguro de ELIMINAR?');"></a>&nbsp;
+                                                        <a class="icon-edit" href="frmEdit.jsp?accion=actualizar&idper=<%=rs.getString("idper") %>" title="Editar"></a>&nbsp;
+                                                        <a class="icon-print" href="jasper/certificado.jsp?idper=<%=rs.getString("idper")%>" title="PRINT"></a>&nbsp;
                                                     </td>
                                                 </tr>
                                                 <%}%>
