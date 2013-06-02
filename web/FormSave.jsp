@@ -43,6 +43,15 @@ else if(accion.equals("actualizar")&&(idper.length()>0)&&(idper.length()>0))
 }
 
 else if(accion.equals("eliminar")){
+consulta = "DELETE FROM persona WHERE idper=? ;";
+                ps = conex.prepareStatement(consulta);
+                ps.setString(1, idper);
+                ps.executeUpdate();
+             //   if (ps.executeUpdate() == 1) {
+                    response.sendRedirect("reporte.jsp");
+             //   } else {
+                    out.print("No es posible eliminar contacto");
+            //    }
     
 }else{
     out.print("Accion invalida...");
