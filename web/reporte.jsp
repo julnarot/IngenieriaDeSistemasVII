@@ -55,8 +55,10 @@
 		</script>
                 
     </head>
+    
+    
     <body>
-        
+    
         <div class="navbar">
             <div class="navbar-inner" align="center">
                 <h3>IV SEMINARIO DE LA TENDENCIA DE DESARROLLO DE SOFTWARE</h3>
@@ -115,7 +117,7 @@
                                                         &nbsp;<a class="icon-print" href="jasper/certificado.jsp?idper=<%=rs.getString("idper")%>" title="PRINT"></a>&nbsp;
                                                     </td>
                                                 </tr>
-                                                <%}
+                                                <%}%>
     
                                             </tbody>
                                         </table>
