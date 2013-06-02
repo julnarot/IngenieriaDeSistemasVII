@@ -4,8 +4,9 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
     "http://www.w3.org/TR/html4/loose.dtd">
 <%
-    consulta = "SELECT idper, name, dni, codigo, monto, asistencia, entregado, nroticket, idenc "
-               + "FROM persona WHERE idper=?;";
+    consulta = "SELECT p.idper, p.name, p.dni, p.codigo, p.monto, p.asistencia, p.entregado, p.nroticket, e.name AS responsable "
+             + " FROM persona p INNER JOIN encargado e ON e.idenc = p.idenc "
+             + " WHERE p.idper=?;";
     ps = conex.prepareStatement(consulta);
     ps.setString(1, request.getParameter("idper"));
     rs = ps.executeQuery();
@@ -66,7 +67,23 @@
                     </tr>
                     <tr>
                         <td>ASISTENCIA</td>
-                        <td><input type="text" name="asistencia" value="<%=rs.getString("asistencia")%>" /> </td>
+                        <td>
+                            <select name="asistencia">
+                                <option value="<%=rs.getString("asistencia")%>">
+                                    <%
+                                    if(rs.getString("asistencia").equals("1"))
+                                    {
+                                        out.print("Asistio");
+                                    }else
+                                    {
+                                        out.print("No Asistio");
+                                    }
+                                    %>
+                                </option>
+                                <option value="1">Asistio</option>
+                                <option value="0">No Asistio</option>
+                            </select>
+                        </td>
                     </tr>   
                     <tr>
                         <td>ESTADO CERTIFICADO</td>
@@ -74,16 +91,17 @@
                     </tr>
                     <tr>
                         <td>Nº TICKET</td>
-                        <td><input type="text" name="nroticket" value="<%=rs.getString("entregado")%>"/> </td>
+                        <td><input type="text" name="nroticket" value="<%=rs.getString("nroticket")%>"/> </td>
                     </tr>
                     <tr>
                         <td>RESPONSABLE</td>
-                        <td><input type="text" name="idenc" value="<%=rs.getString("idenc")%>"/> </td>
+                        <td><input type="text" value="<%=rs.getString("responsable")%>"/> </td>
                     </tr>
                     <tr>
                         <td>ACTUALIZADO POR</td>
-                        <td><input type="text" name="idenc" value="<%=request.getSession().getAttribute("Id")%>"/> </td>
+                        <td><input type="text" name="actualizado" value="<%=request.getSession().getAttribute("Id")%>"/> </td>
                     </tr>
+                    
                     <%}%>
                 </table>
                 

@@ -16,6 +16,7 @@ String idenc = request.getParameter("idenc");
 String monto = request.getParameter("monto");
 String entregado = request.getParameter("entregado");
 String nroticket = request.getParameter("nroticket");
+String actualizado = request.getParameter("actualizado");
 
 
 if(accion.equals("guardar"))
@@ -36,7 +37,7 @@ if(accion.equals("guardar"))
 }
 else if(accion.equals("actualizar"))
 {
-    consulta="update persona set name=?, dni=?, codigo=?, monto=?, asistencia=?, entregado=?, nroticket=?, idenc=?, actualizadoby=? where idper=?;";
+    consulta="update persona set name=?, dni=?, codigo=?, monto=?, asistencia=?, entregado=?, nroticket=?, actualizado=? where idper=?;";
     ps=conex.prepareStatement(consulta);
     ps.setString(1, name);
     ps.setString(2, dni);
@@ -45,9 +46,9 @@ else if(accion.equals("actualizar"))
     ps.setString(5, asistencia);
     ps.setString(6, entregado);
     ps.setString(7, nroticket);
-    ps.setString(8, idenc);
+    ps.setString(8, actualizado);
     ps.setString(9, idper);
-    ps.setstring(10, actualizadoby);
+    
 
     if(ps.executeUpdate()==1){response.sendRedirect("reporte.jsp");}
     else{out.print("No es posible actualizar");}
