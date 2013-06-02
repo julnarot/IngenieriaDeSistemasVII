@@ -71,7 +71,7 @@
         <div class="container-fluid">
             <div class="row-fluid">
                 <div class="span2">
-                    <a href="frmNuevo.jsp"  class="btn btn-large btn-block btn-primary btn btn-info" id="nuevofm">Nuevo</li>           
+                    <a href="frmNuevo.jsp"  class="btn btn-large btn-block btn-primary btn btn-info" >Nuevo</li>           
                     <a href="#" class="btn btn-large btn-block btn-primary btn btn-info">Reporte Inscritos</a>
                     <a href="#" class="btn btn-large btn-block btn-primary btn btn-info">Recaudacion En moneda</a>                    
                 </div>
