@@ -24,18 +24,17 @@
         String usuid=rs.getString("idenc");
         request.getSession().setAttribute("userName",usu);
         request.getSession().setAttribute("userId",usuid);
-        
         response.sendRedirect("reporte.jsp");        
         }
         }catch(SQLException e){ System.out.println(e.getMessage());
         }finally{
         
         }
-        %>
-        
-        
-        
-        
+%>
+
+
+
+
 <html>
     <head>
         <title>IVseminarioSystem</title>
@@ -59,62 +58,99 @@
         <!--[if lte IE 7]><link rel="stylesheet" href="css/ie7.css" /><![endif]-->                
         <link rel="stylesheet" href="miniport/css/jquery-ui.css" />
         <script src="miniport/js/jquery-ui.js"></script>
-  
-  <script>
-  $(function() {
-       
-    $( "#dialog" ).dialog({
-      autoOpen: false,
-      resizable:false,
-      show: {
-        effect: "blind",
-        duration: 1000
-      },
-      hide: {
-        effect: "explode",
-        duration: 1000
-      }
-    });
- 
-    $( "#opener" ).click(function() {
-      $( "#dialog" ).dialog( "open" );
-    });
-  });
-  </script>
-  
-  
 
-  
-  
-        
+        <script>
+            $(function() {
+
+                $("#dialog").dialog({
+                    autoOpen: false,
+                    resizable: false,
+                    show: {
+                        effect: "blind",
+                        duration: 1000
+                    },
+                    hide: {
+                        effect: "explode",
+                        duration: 1000
+                    }
+                });
+
+                $("#opener").click(function() {
+                    $("#dialog").dialog("open");
+                });
+            });
+        </script>
+
+        <script>
+            function soloLetras(e) {
+                key = e.keyCode || e.which;
+                tecla = String.fromCharCode(key).toLowerCase();
+                letras = " áéíóúabcdefghijklmnñopqrstuvwxyz";
+                especiales = [8, 37, 39, 46];
+
+                tecla_especial = false
+                for (var i in especiales) {
+                    if (key == especiales[i]) {
+                        tecla_especial = true;
+                        break;
+                    }
+                }
+
+                if (letras.indexOf(tecla) == -1 && !tecla_especial)
+                    return false;
+            }
+
+            function limpia() {
+                var val = document.getElementById("miInput").value;
+                var tam = val.length;
+                for (i = 0; i < tam; i++) {
+                    if (!isNaN(val[i]))
+                        document.getElementById("miInput").value = '';
+                }
+            }
+            function validar(e) {
+                tecla = (document.all) ? e.keyCode : e.which;
+                if (tecla == 8)
+                    return true;
+                patron = /\d/;
+                te = String.fromCharCode(tecla);
+                return patron.test(te);
+            }
+        </script>
+
+
+
+
+
+
     </head>
     <body>
 
         <div id="dialog" title="Ingrese">
-            
+
             <form action="index.jsp" method="POST" >
                 <table border="0">                
-                <tbody>
-                    <tr>
-                        <td>Usuario:</td>
-                        <td><input type="text" name="usuario" value="" id="fil" size="10" required=""/></td>
-                
-                    </tr>
-                    <tr>
-                        <td>Password:</td>
-                        <td><input type="password" name="clave" value="" id="fil" size="10" required=""/></td>
-                    </tr>
-                    <tr>
-                        <td colspan="2" align="center"><input type="submit" value="Ingresar" /></td>                        
-                    </tr>
-                </tbody>
-            </table>
-            </form>
-            
+                    <tbody>
+                        <tr>
+                            <td>Usuario:</td>
+                            <td><input type="text" name="usuario" value="" id="fil" size="10" required=""/></td>
 
-</div>
-        
-        
+                        </tr>
+                        <tr>
+                            <td>Password:</td>
+                            <td><input type="password" name="clave" value="" id="fil" size="10" required=""/></td>
+                        </tr>
+                        <tr>
+                            <td colspan="2" align="center"><input type="submit" value="Ingresar" /></td>                        
+                        </tr>
+                    </tbody>
+                </table>
+            </form>
+
+
+        </div>
+
+
         <!-- Nav -->
         <nav id="nav">
             <ul>
@@ -124,11 +160,11 @@
                 <li><img src="miniport/images/login-icon.png" id="opener" width="35" height="35" alt="login-icon"/></li>
             </ul>
         </nav>
-        
-<%
-%>
-<%
-%>      <!-- Home -->
+
+        <%
+        %>
+        <%
+        %>      <!-- Home -->
         <div class="wrapper wrapper-style1 wrapper-first">
             <article class="5grid-layout" id="top">
                 <div class="row">
@@ -137,20 +173,20 @@
                     </div>
                     <div class="8u">
                         <center>
-                            
+
                             <header>
-                            <h2><strong>IV SEMINARIO DE LA TENDENCIA</strong></h2>
-                            <h2><strong>DE DESARROLLO DE SOFTWARE</strong></h2>
-                        </header>
+                                <h2><strong>IV SEMINARIO DE LA TENDENCIA</strong></h2>
+                                <h2><strong>DE DESARROLLO DE SOFTWARE</strong></h2>
+                            </header>
                             <h6><strong>Informes e Inscripciónes:</strong> <br/>
-                            951-751596 <br/>
-                            danlev20@gmail.com
-                        </h6>
-                                
-                                <br/>
-                                <br/>
-                                <br/>
-                        <a href="#contact" class="button button-big">Registrate</a>
+                                951-751596 <br/>
+                                danlev20@gmail.com
+                            </h6>
+
+                            <br/>
+                            <br/>
+                            <br/>
+                            <a href="#contact" class="button button-big">Registrate</a>
                         </center>
                     </div>
                 </div>
@@ -160,8 +196,8 @@
         <!-- Work -->
 
         <!-- Contact -->
-        
-        
+
+
         <div class="wrapper wrapper-style4">
             <article id="contact">
                 <header>
@@ -175,15 +211,15 @@
                                 <form method="post" action="#">
                                     <div class="5grid">
                                         <div class="row">
-       
-                                                NOMBRES Y APELLIDOS
-                                                <input type="text" name="name" id="name" placeholder="Apellidos y Nombres" onChange="javascript:this.value=this.value.toUpperCase();" required autocomplete="off"/>
-                                                <label>DNI</label>
-                                                <input type="text" name="dni" id="dni" placeholder="Dni" maxlength="8" autocomplete="off"/>
-                                                <label>EMAIL</label>
-                                                <input type="text" name="email"  id="email" placeholder="Email" autocomplete="off"/>
-                                                <label>COMENTARIO</label>
-                                                <textarea type="text" name="comentario" id="comentario" rows="2" cols="5" maxlength="190" placeholder="Comentario" autocomplete="off"></textarea>
+
+                                            NOMBRES Y APELLIDOS
+                                            <input type="text" onkeypress="return soloLetras(event)" onblur="limpia()" name="name" id="name" placeholder="Apellidos y Nombres" onChange="javascript:this.value = this.value.toUpperCase();" required autocomplete="off" maxlength="59"/>
+                                            <label>DNI</label>
+                                            <input type="text" onkeypress = "return validar(event)" name="dni" id="dni" placeholder="Dni" maxlength="8" autocomplete="off"/>
+                                            <label>EMAIL</label>
+                                            <input type="text" name="email"  id="email" placeholder="Email" autocomplete="off" maxlength="59"/>
+                                            <label>COMENTARIO</label>
+                                            <textarea type="text" onkeypress="return soloLetras(event)" onblur="limpia()" name="comentario" id="comentario" rows="2" cols="5" maxlength="190" placeholder="Comentario" autocomplete="off" maxlength="150"></textarea>
                                         </div>
                                         <div class="row">
                                             <div class="12u">
@@ -205,7 +241,7 @@
         </div>
 
         <!-- Portfolio -->
-        <center>
+    <center>
         <div class="wrapper wrapper-style3">
             <article id="portfolio">
                 <header>
@@ -224,19 +260,19 @@
                                 texto
                                 --%>
                                 <p>
-                                    
-Fecha: 4 de Junio<br/>
-Hora  : 9 am<br/>
-Lugar: Teatrin Paraninfo - UPeU
-            Carretera salida arequipa 
-            Km. 6 Chullunquiani - Juliaca
+
+                                    Fecha: 4 de Junio<br/>
+                                    Hora  : 9 am<br/>
+                                    Lugar: Teatrin Paraninfo - UPeU
+                                    Carretera salida arequipa 
+                                    Km. 6 Chullunquiani - Juliaca
                                 </p>
                             </article>
-                                
+
                         </div>
-                                <div class="4u">
+                        <div class="4u">
                             <iframe style="border-radius: 1px; box-shadow:0px 0px 20px rgba(0,0,0,2);" width="625" height="550" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com.pe/maps/ms?msa=0&amp;msid=201208650378120476994.0004dd7efce262b0f911b&amp;hl=es&amp;ie=UTF8&amp;ll=-15.51493,-70.18179&amp;spn=0,0&amp;t=m&amp;output=embed"></iframe><br /><small><a href="https://maps.google.com.pe/maps/ms?msa=0&amp;msid=201208650378120476994.0004dd7efce262b0f911b&amp;hl=es&amp;ie=UTF8&amp;ll=-15.51493,-70.18179&amp;spn=0,0&amp;t=m&amp;source=embed" style="color:#0000FF;text-align:left"></a></small>
-                                
+
                         </div>
 
 
@@ -244,16 +280,16 @@ Lugar: Teatrin Paraninfo - UPeU
 
                 </div>
         </div>
-    
+
         <footer>
             <p id="copyright">
                 &copy; 2013 Miniport | MagwI
             </p>
         </footer>
     </center>
-        
-        
-    </article>
+
+
+</article>
 </div>
 
 
