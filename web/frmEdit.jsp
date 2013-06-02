@@ -43,83 +43,104 @@
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                 <h3>EDITAR PERSONAS</h3>
             </div>
-            
-                
+
+
             <form action="FormSave.jsp" method="post">
-                    <div class="modal-body">
-                <table align="center" width="300">
-                    <%if (rs.next()) {%>
-                    <tr>
-                        <td>NOMBRE</td>
-                        <td><input type="text" name="name" value="<%=rs.getString("name")%>" /> </td>
-                    </tr>   
-                    <tr>
-                        <td>DNI</td>
-                        <td><input type="text" name="dni" value="<%=rs.getString("dni")%>"/> </td>
-                    </tr>   
-                    <tr>
-                        <td>CODIGO</td>
-                        <td><input type="text" name="codigo" value="<%=rs.getString("codigo")%>"/> </td>
-                    </tr>   
-                    <tr>
-                        <td>MONTO</td>
-                        <td><input type="text" name="monto" value="<%=rs.getString("monto")%>" /> </td>
-                    </tr>
-                    <tr>
-                        <td>ASISTENCIA</td>
-                        <td>
-                            <select name="asistencia">
-                                <option value="<%=rs.getString("asistencia")%>">
-                                    <%
-                                    if(rs.getString("asistencia").equals("1"))
-                                    {
-                                        out.print("Asistio");
-                                    }else
-                                    {
-                                        out.print("No Asistio");
-                                    }
-                                    %>
-                                </option>
-                                <option value="1">Asistio</option>
-                                <option value="0">No Asistio</option>
-                            </select>
-                        </td>
-                    </tr>   
-                    <tr>
-                        <td>ESTADO CERTIFICADO</td>
-                        <td><input type="text" name="entregado" value="<%=rs.getString("entregado")%>"/> </td>
-                    </tr>
-                    <tr>
-                        <td>Nº TICKET</td>
-                        <td><input type="text" name="nroticket" value="<%=rs.getString("nroticket")%>"/> </td>
-                    </tr>
-                    <tr>
-                        <td>RESPONSABLE</td>
-                        <td><input type="text" value="<%=rs.getString("responsable")%>"/> </td>
-                    </tr>
-                    <tr>
-                        <td>ACTUALIZADO POR</td>
-                        <td><input type="text" name="actualizado" value="<%=request.getSession().getAttribute("Id")%>"/> </td>
-                    </tr>
-                    
-                    <%}%>
-                </table>
-                
-                
+                <div class="modal-body">
+                    <table align="center" width="300">
+                        <%if (rs.next()) {%>
+                        <tr>
+                            <td>NOMBRE
+                                <input type="text" name="name" value="<%=rs.getString("name")%>" /> </td>
+                            <td>
+                                ASISTENCIA
+                                <select name="asistencia">
+                                    <option value="<%=rs.getString("asistencia")%>">
+                                        <%
+                                        if(rs.getString("asistencia").equals("1"))
+                                        {
+                                            out.print("Asistio");
+                                        }else
+                                        {
+                                            out.print("No Asistio");
+                                        }
+                                        %>
+                                    </option>
+                                    <option value="1">Asistio</option>
+                                    <option value="0">No Asistio</option>
+                                </select>
+                            </td>
+                        </tr>   
+                        <tr>
+                            
+                            <td>DNI<input type="text" name="dni" value="<%=rs.getString("dni")%>"/> </td>
+                            <td>CODIGO<input type="text" name="codigo" value="<%=rs.getString("codigo")%>"/> </td>   
+                        </tr> 
+                            
+                        <tr>
+
+                            <td>
+                                <label>MONTO</label>
+                                <input type="text" name="monto" value="<%=rs.getString("monto")%>" /> </td>
+
+                            <td>
+                                <label>Nº TICKET</label>
+                                <input type="text" name="nroticket" value="<%=rs.getString("nroticket")%>"/> </td>
+                        </tr>
+                        <tr>
+
+                        </tr>   
+                        <tr>
+                            <td>CERTIFICADO</td>
+                            <td>
+                                <select name="entregado">
+                                    <option value="<%=rs.getString("entregado")%>">
+                                        <%
+                                        if(rs.getString("entregado").equals("1"))
+                                        {
+                                            out.print("Entregado");
+                                        }else
+                                        {
+                                            out.print("No Entregado");
+                                        }
+                                        %>
+                                    </option>
+                                    <option value="1">Entregado</option>
+                                    <option value="0">No Entregado</option>
+                                </select>
+                            </td>
+                            </td>
+                        </tr>
+                        <tr>
+
+                        </tr>
+                        <tr>
+                            <td>RESPONSABLE</td>
+                            <td><input type="text" value="<%=rs.getString("responsable")%>"/> </td>
+                        </tr>
+                        <tr>
+                            <td>ACTUALIZADO POR</td>
+                            <td><input type="text" name="actualizado" value="<%=request.getSession().getAttribute("Id")%>"/> </td>
+                        </tr>
+
+                        <%}%>
+                    </table>
+
+
                 </div>
                 <div class="modal-footer">
                     <a href="reporte.jsp" class="btn">Close</a>
-                <button class="btn btn-primary" type="submit" title="Guardar">Guardar Cambios</button>
-                
-                <input type="hidden" name="accion" value="actualizar"/>
-                <input type="hidden" name="idper" value="<%=rs.getString("idper")%>"/>
-            </div>
-            <%conex.close();%>
+                    <button class="btn btn-primary" type="submit" title="Guardar">Guardar Cambios</button>
+
+                    <input type="hidden" name="accion" value="actualizar"/>
+                    <input type="hidden" name="idper" value="<%=rs.getString("idper")%>"/>
+                </div>
+                <%conex.close();%>
             </form>
-            
-            
+
+
         </div>
-<%--
+        <%--
 
         <div align="center">
             <form action="amigo_save.jsp" method="post">
@@ -145,6 +166,6 @@
             </form>
         </div>
             
-            --%>
+        --%>
     </body>
 </html>

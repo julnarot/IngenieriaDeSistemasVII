@@ -21,16 +21,19 @@ String actualizado = request.getParameter("actualizado");
 
 if(accion.equals("guardar"))
     {
-    consulta="insert into persona(name, codigo, email, estado, asistencia, comentario, dni, idenc, monto, entregado, nroticket) "
-                         + "values (?,    '0',     ?,     '1',     '0',      ?,          ?,   ?,   ?,     '0',      ?);";
+    consulta="insert into persona(name, codigo, email, estado, asistencia, dni, idenc, monto, nroticket, entregado) "
+                         + "values (?,    ?,     ?,     '1',     ?,         ?,   ?,      ?,     ?,         ?);";
     ps=conex.prepareStatement(consulta);
     ps.setString(1, name);
-    ps.setString(2, email);
-    ps.setString(3, comentario);
-    ps.setString(4, dni);
-    ps.setString(5, idenc);
-    ps.setString(6, monto);
-    ps.setString(7, nroticket);
+    ps.setString(2, codigo);
+    ps.setString(3, email);
+    ps.setString(4, asistencia);
+    ps.setString(5, dni);
+    ps.setString(6, idenc);
+    ps.setString(7, monto);
+    ps.setString(8, nroticket);
+    ps.setString(9, entregado);
+
     if(ps.executeUpdate()==1){response.sendRedirect("reporte.jsp");}
     else{out.print("No es posible registrar");
     }
