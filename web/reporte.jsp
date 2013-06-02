@@ -112,11 +112,11 @@
                                                     <td>
                                                         &nbsp;<a class="icon-trash" href="#" onclick="return confirm('¿Estas seguro de ELIMINAR?');"></a>&nbsp;
                                                         &nbsp;<a class="icon-edit" href="frmEdit.jsp?accion=actualizar&idper=<%=rs.getString("idper") %>" title="Editar"></a>&nbsp;
-                                                        &nbsp;<a class="icon-print" href="#" title="PRINT"></a>&nbsp;
+                                                        &nbsp;<a class="icon-print" href="jasper/certificado.jsp?idper=<%=rs.getString("idper")%>" title="PRINT"></a>&nbsp;
                                                     </td>
                                                 </tr>
                                                 <%}
-                    conex.close();%>
+    
                                             </tbody>
                                         </table>
                                     </div>
