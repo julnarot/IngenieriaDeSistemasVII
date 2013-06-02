@@ -30,11 +30,11 @@ CREATE TABLE `encargado` (
   `clave` varchar(10) NOT NULL,
   `numtelefono` varchar(20) NOT NULL,
   PRIMARY KEY (`idenc`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
 
 /*Data for the table `encargado` */
 
-insert  into `encargado`(`idenc`,`direccion`,`estado`,`name`,`rol`,`usuario`,`clave`,`numtelefono`) values (1,'dir1','1','web','web','web','123456','0000000'),(2,'xyz','1','juan','responsable 1,2,3','juan','123456','00000'),(3,'nnn','1','gerson','esternos','gerson','123456','00000'),(4,'magwi','1','william','admin','magwi','123456','00000'),(5,'antartida','1','raul','admin','riko','123456','00000');
+insert  into `encargado`(`idenc`,`direccion`,`estado`,`name`,`rol`,`usuario`,`clave`,`numtelefono`) values (1,'dir1','1','web','web','web','123456','0000000'),(2,'xyz','1','juan','responsable 1,2,3','juan','123456','00000'),(3,'nnn','1','gerson','esternos','gerson','123456','00000'),(4,'Groenlandia','1','william','admin','magwi','123456','00000'),(5,'antartida','1','raul','admin','riko','123456','00000'),(6,'antartida','1','oscar','admin','oscar','123456','00000'),(7,'inivitada','1','yovana','admin','yovis','123','10101');
 
 /*Table structure for table `persona` */
 
@@ -43,24 +43,25 @@ DROP TABLE IF EXISTS `persona`;
 CREATE TABLE `persona` (
   `idper` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(60) NOT NULL,
-  `codigo` int(20) DEFAULT NULL,
+  `codigo` varchar(20) DEFAULT NULL,
   `email` varchar(60) DEFAULT NULL,
   `estado` varchar(10) DEFAULT NULL,
   `asistencia` varchar(10) NOT NULL,
   `comentario` varchar(200) DEFAULT NULL,
-  `dni` varchar(10) NOT NULL,
+  `dni` varchar(10) DEFAULT NULL,
   `idenc` int(11) NOT NULL,
   `monto` decimal(10,0) NOT NULL,
-  `entregado` decimal(10,0) NOT NULL,
+  `entregado` decimal(10,0) DEFAULT NULL,
   `nroticket` int(10) NOT NULL,
+  `actualizado` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`idper`),
   KEY `encargado_persona_fk` (`idenc`),
   CONSTRAINT `encargado_persona_fk` FOREIGN KEY (`idenc`) REFERENCES `encargado` (`idenc`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=latin1;
 
 /*Data for the table `persona` */
 
-insert  into `persona`(`idper`,`name`,`codigo`,`email`,`estado`,`asistencia`,`comentario`,`dni`,`idenc`,`monto`,`entregado`,`nroticket`) values (2,'WILLIAM CALISAYA PARI',200810381,'elmagwi@gmail.com','1','0','cool','44444444',1,'15','0',101),(13,'DELGADO COASACA LUCERO SANCAYO',0,'lucerosancayo@gmail.com','1','0','\'\'','47649677',1,'0','0',0),(14,'XXXX',0,'kjhlkh','1','0','kjhkh','87687',1,'0','0',0);
+insert  into `persona`(`idper`,`name`,`codigo`,`email`,`estado`,`asistencia`,`comentario`,`dni`,`idenc`,`monto`,`entregado`,`nroticket`,`actualizado`) values (2,'WILLIAM CALISAYA PARI','200810381','elmagwi@gmail.com','1','0','cool','44444444',1,'15','0',101,NULL),(13,'DELGADO COASACA LUCERO SANCAYO','0','lucerosancayo@gmail.com','1','0','\'\'','47649677',1,'0','0',0,NULL),(16,'SANDRA MILAGROS RIZGO AQUINO','0','milagrosrisgo@hotmail.com','1','0','','47860259',1,'0','0',0,NULL),(18,'CRISTIAN JUNIOR SAAVEDRA QUISPE','0','cristiansaavedraquispe@gmail.com','1','0','espero pasarla bien y aprender muchas cosas. Gracias','71574820',1,'0','0',0,NULL),(19,'CRISTIAN SAAVEDRA QUISPE','0','cristiansaavedraquispe@gmail.com','1','0','','71574820',1,'0','0',0,NULL);
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
