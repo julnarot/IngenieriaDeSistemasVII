@@ -73,8 +73,8 @@
                         </tr>   
                         <tr>
                             
-                            <td>DNI<input type="text" name="dni" value="<%=rs.getString("dni")%>"/> </td>
-                            <td>CODIGO<input type="text" name="codigo" value="<%=rs.getString("codigo")%>"/> </td>   
+                            <td>DNI<input type="text" name="dni" value="<%=rs.getString("dni")%>" maxlength="8"/> </td>
+                            <td>CODIGO<input type="text" name="codigo" value="<%=rs.getString("codigo")%>" maxlength="9"/> </td>   
                         </tr> 
                             
                         <tr>

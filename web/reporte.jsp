@@ -14,8 +14,9 @@
 %>
 
 <%
-    consulta = "select * from persona  "
-            + " where name like ('%" + nombre + "%') order by name ";
+    consulta = "SELECT p.idper, p.name, p.nroticket, p.monto, p.dni, p.codigo,  p.asistencia, p.entregado,  e.name AS responsable "
+             + " FROM persona p INNER JOIN encargado e ON e.idenc = p.idenc  "
+            + " where p.name like ('%" + nombre + "%') order by p.idper desc ";
     ps = conex.prepareStatement(consulta);
     rs = ps.executeQuery();
 %>
@@ -101,9 +102,13 @@
                                                 <tr>
                                                     <th>ID</th>
                                                     <th>NOMBRE</th>
+                                                    <th>Nº TICKET</th>
                                                     <th>MONTO</th>
-                                                    <th>ENTREGADO</th>
-                                                    <th>NRO TICKET</th>
+                                                    <th>DNI</th>
+                                                    <th>CODIGO</th>
+                                                    <th>ASISTENCIA</th>
+                                                    <th>CERTIFICADO</th>
+                                                    <th>RESPONSABLE</th>
                                                     <th>OPCIONES</th>
                                                 </tr>
                                             </thead>
@@ -113,9 +118,13 @@
                                                 <tr>
                                                     <td><%=rs.getString("idper")%></td>
                                                     <td><%=rs.getString("name")%></td>
-                                                    <td><%=rs.getString("monto")%></td>
-                                                    <td><%=rs.getString("entregado")%></td>
                                                     <td><%=rs.getString("nroticket")%></td>
+                                                    <td><%=rs.getString("monto")%></td>
+                                                    <td><%=rs.getString("dni")%></td>
+                                                    <td><%=rs.getString("codigo")%></td>
+                                                    <td><%=rs.getString("asistencia")%></td>
+                                                    <td><%=rs.getString("entregado")%></td>
+                                                    <td><%=rs.getString("responsable")%></td>
                                                     <td>
                                                         <a class="icon-trash" href="FormSave.jsp?accion=eliminar&idper=<%=rs.getString("idper") %>" onclick="return confirm('¿Estas seguro de ELIMINAR?');"></a>&nbsp;
                                                         <a class="icon-edit" href="frmEdit.jsp?accion=actualizar&idper=<%=rs.getString("idper") %>" title="Editar"></a>&nbsp;
