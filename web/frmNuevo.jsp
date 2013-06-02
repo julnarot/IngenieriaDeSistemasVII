@@ -36,6 +36,7 @@
                         <textarea type="text" name="comentario" id="comentario" rows="2" cols="5" maxlength="190" placeholder="Comentario"></textarea>
                     </div>    
                     <div>
+                        <input type="hidden" name="idenc" value="<%=request.getSession().getAttribute("Id")%>" />
                         <input type="submit" class="button" value="Registrar" />
                         <input type="reset" class="button" value="Cancel" onclick = "location='reporte.jsp'" />
                     </div>

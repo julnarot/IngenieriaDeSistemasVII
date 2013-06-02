@@ -24,7 +24,7 @@
         String usuid=rs.getString("idenc");
         request.getSession().setAttribute("userName",usu);
         request.getSession().setAttribute("userId",usuid);
-        request.getSession().setAttribute("userId","");
+        
         response.sendRedirect("reporte.jsp");        
         }
         }catch(SQLException e){ System.out.println(e.getMessage());

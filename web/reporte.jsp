@@ -10,8 +10,9 @@
     String stylo = "display:normal";
     String UsuarioNombre=(String) request.getSession().getAttribute("userName");
     String UsuarioId=(String) request.getSession().getAttribute("userId");
-    
+    request.getSession().setAttribute("Id",UsuarioId);
 %>
+
 <%
     consulta = "select * from persona  "
             + " where name like ('%" + nombre + "%') order by name ";
@@ -58,7 +59,7 @@
     
     
     <body>
-    
+   <input type="hidden" name="idencwww" value="<%=UsuarioId%>" /> 
         <div class="navbar">
             <div class="navbar-inner" align="center">
                 <h3>IV SEMINARIO DE LA TENDENCIA DE DESARROLLO DE SOFTWARE</h3>
