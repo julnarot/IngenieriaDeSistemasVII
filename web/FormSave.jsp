@@ -34,11 +34,22 @@ if(accion.equals("guardar"))
     else{out.print("No es posible registrar");
     }
 }
-else if(accion.equals("actualizar")&&(idper.length()>0)&&(idper.length()>0))
+else if(accion.equals("actualizar"))
 {
-    consulta="update ;";
+    consulta="update persona set name=?, dni=?, codigo=?, monto=?, asistencia=?, entregado=?, nroticket=?, idenc=?, actualizadoby=? where idper=?;";
     ps=conex.prepareStatement(consulta);
-    if(ps.executeUpdate()==1){response.sendRedirect("conductor_list.jsp");}
+    ps.setString(1, name);
+    ps.setString(2, dni);
+    ps.setString(3, codigo);
+    ps.setString(4, monto);
+    ps.setString(5, asistencia);
+    ps.setString(6, entregado);
+    ps.setString(7, nroticket);
+    ps.setString(8, idenc);
+    ps.setString(9, idper);
+    ps.setstring(10, actualizadoby);
+
+    if(ps.executeUpdate()==1){response.sendRedirect("reporte.jsp");}
     else{out.print("No es posible actualizar");}
 }
 
