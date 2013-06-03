@@ -30,10 +30,14 @@ DataSource dataSource =(DataSource)context.lookup("jdbc/[dsMiBaseDatos]");
 Connection conexion = dataSource.getConnection();
 */
 String dirUploadFiles = getServletContext().getRealPath("jasper/certificado.jasper");
+String urlFile = application.getRealPath("jasper/");
 //File reportFile = new File(application.getRealPath("web/modulos/reportes/estandarEAP/DatosEstandarSI.jasper"));
  System.out.println("File---jasper--->"+dirUploadFiles);
+System.out.println("File---jasper--->"+urlFile);
+
 Map parameters = new HashMap();
 parameters.put("idper",idper);
+parameters.put("urlFile",urlFile);
 
 System.out.println("------idEstandarEAP-----"+idEstandarEap);
 byte[] bytes = JasperRunManager.runReportToPdf(dirUploadFiles, parameters, conexion);
