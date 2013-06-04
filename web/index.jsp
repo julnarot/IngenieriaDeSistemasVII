@@ -2,6 +2,7 @@
     Document   : pprincipal
     Created on : 28-mar-2013, 22:44:27
     Author     : MAGWI
+pio
 --%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@include file="conexion.jsp" %>
